@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Arithmetic</title>
+    </head>
+
+    <body>
+
+        <selection>
+        <h1>Arithmetic</h1>
+
+    <input id="num1">
+    <label>+</label>
+    <input id="num2">
+    
+    <button onclick="add()">=</button>
+    <label id="sum"></label>
+        </selection>
+
+    <script>
+        async function add(){
+            const inp1 = document.getElementById("num1");
+            const inp2 = document.getElementById("num2");
+            //let sum = Number(inp1.value) + Number(inp2.value);
+            //
+            let x = inp1.value;
+            let y = inp2.value;
+            //adding this to work with backend
+            const response = await fetch("http://localhost:3000/add/" + x + "/" + y);
+            const sum = await response.json();
+            
+            document.getElementById("sum").innerText = sum;
+        }
+    </script>
+    </body>
+</html>
